@@ -154,6 +154,7 @@ body::-webkit-scrollbar-track{
 	border-radius: 2px;
 	background-color: #fff;
 	transition:all .5s ease-in-out;
+	margin:4px 0;
 }
 
 .s-pagination .swiper-pagination-bullet-active {

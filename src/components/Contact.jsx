@@ -53,7 +53,7 @@ const Contact = () => {
               </div>
               <div className="w-full">
                 <textarea
-                  className="w-[92%] h-[15rem] bg-[#333] max-md:w-full"
+                  className="w-[92%] h-[15rem] bg-[#333] max-mf:w-full"
                   name=""
                 ></textarea>
               </div>

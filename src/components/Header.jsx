@@ -43,7 +43,7 @@ const Header = () => {
   return (
     <header className={`w-full h-[5rem] flex justify-center transition-all duration-75 items-center fixed top-0 left-0 z-[500] text-white ${scrolled ? 'bg-[rgba(0,0,0,0.7)] glassy' : 'bg-transparent'}`}>
       <div className="w-11/12 mx-auto flex items-center justify-between">
-        <div className="flex items-center -space-x-2">
+        <div className="flex items-center -space-x-4">
           <img src={logo} alt="" className="h-[3rem] w-[3rem]" />
           <h3 className="text-[#FFA500] mt-5 font-[marko] text-xl">lockvest</h3>
         </div>
@@ -64,21 +64,18 @@ const Header = () => {
             Plans
           </li>
           <li className="hover:text-[#FFA500] duration-200 cursor-pointer">
-            Faq
-          </li>
-          <li className="hover:text-[#FFA500] duration-200 cursor-pointer">
             Contact Us
           </li>
         </ul>
         <div className="lg:flex items-center space-x-2 hidden">
-          <Link to={'/login'} className="text-[#FFA500] font-[bellota] border-[2px] border-[#FFA500] px-3 py-1  text-md hover:bg-[#CC8000] hover:text-white hover:border-[#CC8000] flex  items-center space-x-4 uppercase">
+          <Link to={'/login'} className="text-[#FFA500] font-[bellota] border-[2px] border-[#FFA500] px-2 py-1  text-md hover:bg-[#CC8000] hover:text-white hover:border-[#CC8000] flex  items-center space-x-4 uppercase">
             <AiOutlineUser />
             Login
           </Link>
-          <button className="text-white font-[bellota] border-[2px] border-[#FFA500] bg-[#FFA500] px-3 py-1 bg-opacity text-md duration-200 hover:bg-[#CC8000] hover:border-[#CC8000] flex items-center space-x-4 uppercase">
+          <Link to={'/register'} className="text-white font-[bellota] border-[2px] border-[#FFA500] bg-[#FFA500] px-2 py-1 bg-opacity text-md duration-200 hover:bg-[#CC8000] hover:border-[#CC8000] flex items-center space-x-4 uppercase">
             <AiOutlineUserAdd className="text-xl text-white !important" />
             Register
-          </button>
+          </Link>
         </div>
         <div className="h-8 w-8 max-lg:block hidden">
           <svg
