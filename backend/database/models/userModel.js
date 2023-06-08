@@ -1,5 +1,5 @@
 import DataTypes from 'sequelize'
-import sequelize from './db.js'
+import sequelize from '../db_config.js'
 
 const User = sequelize.define(
   "User",
@@ -37,9 +37,9 @@ const User = sequelize.define(
       type: DataTypes.STRING,
     },
 
-    type: {
-      type: DataTypes.INTEGER,
-      defaultValue: 0,
+    role: {
+      type: DataTypes.ENUM("admin","user"),
+      defaultValue: "user",
     },
 
     createdAt: {
@@ -52,5 +52,6 @@ const User = sequelize.define(
     },
   },
 );
+
 User.sync()
 export default User;

@@ -8,7 +8,7 @@ const Login = () => {
 
   return (
     <main className="flex">
-      <section className="w-1/2 h-screen relative">
+      <section className="w-1/2 h-screen relative max-lg:hidden">
         <video
           src={vid}
           className="h-full w-full object-cover"
@@ -25,7 +25,7 @@ const Login = () => {
           </div>
         </div>
       </section>
-      <section className="flex-1 flex justify-center flex-col items-center">
+      <section className="flex-1 flex justify-center flex-col items-center max-lg:mt-32">
         <form className="px-10 w-full">
           <h3 class="mb-8 bellota text-xl text-[#e6e6fa] font-[poppins]">
             Welcome <span>&#128075;</span> dear, sign in please

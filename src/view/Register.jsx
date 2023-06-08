@@ -204,7 +204,7 @@ const Register = () => {
 
   return (
     <main className="flex">
-      <section className="w-1/2 h-screen relative">
+      <section className="w-1/2 h-screen relative max-lg:hidden">
         <video
           src={vid}
           className="h-full w-full object-cover"
@@ -221,7 +221,7 @@ const Register = () => {
           </div>
         </div>
       </section>
-      <section className="flex-1 flex justify-center flex-col items-center">
+      <section className="flex-1 flex justify-center flex-col items-center max-lg:mt-20">
         <form
           className="px-10 w-11/12"
           method="post"
