@@ -13,7 +13,7 @@ const generateAccessToken = (user) => {
   };
 
   const options = {
-    expiresIn: "15m", // Set the access token expiration time
+    expiresIn: "10s", // Set the access token expiration time
   };
 
   return jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, options);

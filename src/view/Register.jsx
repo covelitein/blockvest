@@ -1,8 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import vid from "../assets/Image/vid.mp4";
 import logo from "../assets/Image/logo1.svg";
 import { Link } from "react-router-dom";
 import { api } from "../assets/utils/functions";
+import { validateForm, handleInputChange } from "../assets/Auth/Auth";
+import useDebounce from "../assets/customHooks/useDebounce";
+import { throttle, debounce } from "../assets/utils/functions";
 
 const Register = () => {
   const [fullname, setFullName] = useState("");
@@ -24,183 +27,18 @@ const Register = () => {
     confirmPassword: "",
   });
 
-  useEffect(() => {
-    validateField("fullname", fullname);
-  }, [fullname]);
-
-  useEffect(() => {
-    validateField("username", username);
-  }, [username]);
-
-  useEffect(() => {
-    validateField("email", email);
-  }, [email]);
-
-  useEffect(() => {
-    validateField("address", address);
-  }, [address]);
-
-  useEffect(() => {
-    validateField("phone", phone);
-  }, [phone]);
-
-  useEffect(() => {
-    validateField("password", password);
-  }, [password]);
-
-  useEffect(() => {
-    validateField("confirmPassword", confirmPassword);
-  }, [confirmPassword]);
-
-  useEffect(() => {
-    validateForm();
-  }, [fullname, username, email, address, phone, password, confirmPassword]);
-
   const [isFormValid, setFormValidity] = useState(false);
 
-  const validateForm = () => {
-    const isValid = Object.values(validationErrors).every(
-      (error) => error === ""
-    );
+  useCallback(()=>{
+    validateForm(setFormValidity)
+  },[isFormValid])
 
-    setFormValidity(isValid);
-  };
 
-  const validateField = (fieldName, value) => {
-    let errorMessage = "";
 
-    switch (fieldName) {
-      case "fullname":
-        errorMessage = validateName(value);
-        break;
 
-      case "username":
-        errorMessage = validateUsername(value);
-        break;
 
-      case "email":
-        errorMessage = validateEmail(value);
-        break;
+  
 
-      case "address":
-        errorMessage = value === "" ? "Address is required" : "";
-        break;
-
-      case "phone":
-        errorMessage = value === "" ? "Phone is required" : "";
-        break;
-
-      case "password":
-        errorMessage = value === "" ? "Password is required" : "";
-        break;
-
-      case "confirmPassword":
-        errorMessage =
-          value === ""
-            ? "Confirm Password is required"
-            : password !== confirmPassword
-            ? "Passwords do not match"
-            : "";
-        break;
-
-      default:
-        break;
-    }
-
-    setValidationErrors((prevErrors) => ({
-      ...prevErrors,
-      [fieldName]: errorMessage,
-    }));
-  };
-
-  const validateName = (value) => {
-    const words = value.trim().split(/\s+/);
-    const fullname = value.trim();
-
-    const returnValue =
-      fullname === ""
-        ? "please enter fullname"
-        : fullname === "admin"
-        ? "Forbidden user name"
-        : fullname.length < 3
-        ? "username too short"
-        : words.length < 2
-        ? "Enter both firstname and lastname"
-        : words[0].length < 3 || words[1].length < 3
-        ? "firstname or lastname too short"
-        : "";
-
-    return returnValue;
-  };
-
-  const validateUsername = (value) => {
-    const username = value.trim();
-
-    const returnValue =
-      username === ""
-        ? "please enter username"
-        : username.length < 3
-        ? "username too short"
-        : "";
-  };
-
-  const validateEmail = (value) => {
-    const email = value.trim();
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    const returnValue =
-      email === ""
-        ? "please enter email address"
-        : !emailRegex(email)
-        ? "please enter a valid email address"
-        : "";
-
-    return returnValue;
-  };
-
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-
-    switch (name) {
-      case "fullname":
-        setFullName(value);
-        break;
-      case "username":
-        setUserName(value);
-        break;
-      case "email":
-        setEmail(value);
-        break;
-      case "address":
-        setAddress(value);
-        break;
-      case "phone":
-        setPhone(value);
-        break;
-      case "password":
-        setPassword(value);
-        break;
-      case "confirmPassword":
-        setConfirmPassword(value);
-        break;
-      default:
-        break;
-    }
-  };
-
-  // const handleSubmit = async (e)=> {
-  //     e.preventDefault()
-  //     if(!fullname || !username || !email || !address || !phone || !password) return
-  //     const formData = {
-  //       fullname,
-  //       username,
-  //       email,
-  //       address,
-  //       phone,
-  //       password
-  //     }
-  //     await api.post('/register',formData)
-  // }
 
   return (
     <main className="flex">
@@ -223,11 +61,11 @@ const Register = () => {
       </section>
       <section className="flex-1 flex justify-center flex-col items-center max-lg:mt-20">
         <form
-          className="px-10 w-11/12"
+          className="px-10 w-11/12 font-[poppins] max-md:px-3"
           method="post"
           onSubmit={(e) => e.preventDefault()}
         >
-          <h3 class="mb-8 bellota text-xl text-[#e6e6fa] font-[bellota]">
+          <h3 className="mb-8 bellota text-xl text-[#e6e6fa] font-[bellota]">
             Hey <span>&#128075;</span> dear, get started
           </h3>
 
@@ -235,71 +73,80 @@ const Register = () => {
           <div className="mb-4 w-full">
             <input
               type="text"
-              className="w-full bg-[#333] border-[1px] border-[#444] py-2 px-3 text-[#e6e6fa] font-[opensans] text-sm focus:outline-none focus:ring-0 max-mf:w-full"
+              className="w-full bg-[#333] border-[1px] border-[#444] py-2 px-3 text-[#e6e6fa]  text-sm focus:outline-none focus:ring-0 max-mf:w-full"
               placeholder="FULLNAME"
+              name="fullname"
               value={fullname}
-              onChange={(e) => setFullName(e.target.value)}
+              onChange={(e) =>
+                debounce(handleInputChange(e, setFullName), 2000)
+              }
             />
           </div>
 
           <div className="mb-4 w-full">
             <input
               type="text"
-              className="w-full bg-[#333] border-[1px] border-[#444] py-2 px-3 text-[#e6e6fa] font-[opensans] text-sm focus:outline-none focus:ring-0 max-mf:w-full"
+              className="w-full bg-[#333] border-[1px] border-[#444] py-2 px-3 text-[#e6e6fa]  text-sm focus:outline-none focus:ring-0 max-mf:w-full"
               placeholder="USERNAME"
               value={username}
-              onChange={(e) => setUserName(e.target.value)}
+              onChange={(e) =>
+                debounce(handleInputChange(e, setUserName), 2000)
+              }
             />
           </div>
 
           <div className="mb-4 w-full">
             <input
               type="email"
-              className="w-full bg-[#333] border-[1px] border-[#444] py-2 px-3 text-[#e6e6fa] font-[opensans] text-sm focus:outline-none focus:ring-0 max-mf:w-full"
+              className="w-full bg-[#333] border-[1px] border-[#444] py-2 px-3 text-[#e6e6fa]  text-sm focus:outline-none focus:ring-0 max-mf:w-full"
               placeholder="EMAIL"
               required
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => debounce(handleInputChange(e, setEmail), 2000)}
             />
           </div>
 
           <div className="mb-4 w-full">
             <input
               type="text"
-              className="w-full bg-[#333] border-[1px] border-[#444] py-2 px-3 text-[#e6e6fa] font-[opensans] text-sm focus:outline-none focus:ring-0 max-mf:w-full"
+              className="w-full bg-[#333] border-[1px] border-[#444] py-2 px-3 text-[#e6e6fa]  text-sm focus:outline-none focus:ring-0 max-mf:w-full"
               placeholder="ADDRESS"
               value={address}
-              onChange={(e) => setAddress(e.target.value)}
+              onChange={(e) => debounce(handleInputChange(e, setAddress), 2000)}
             />
           </div>
 
           <div className="mb-4 w-full">
             <input
               type="number"
-              className="w-full bg-[#333] border-[1px] border-[#444] py-2 px-3 text-[#e6e6fa] font-[opensans] text-sm focus:outline-none focus:ring-0 max-mf:w-full"
+              className="w-full bg-[#333] border-[1px] border-[#444] py-2 px-3 text-[#e6e6fa]  text-sm focus:outline-none focus:ring-0 max-mf:w-full"
               placeholder="PHONE NO"
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={(e) => debounce(handleInputChange(e, setPhone), 2000)}
             />
           </div>
 
-          <section className="flex items-center space-x-3 mb-4">
-            <div className="w-[49%]">
+          <section className="flex items-center lg:space-x-3 mb-4 max-lg:flex-col max-lg:space-y-3">
+            <div className="lg:w-[49%] w-full">
               <input
                 type="password"
-                className="w-full bg-[#333] border-[1px] border-[#444] py-2 px-3 text-[#e6e6fa] font-[opensans] text-sm focus:outline-none focus:ring-0 max-mf:w-full"
+                className="w-full bg-[#333] border-[1px] border-[#444] py-2 px-3 text-[#e6e6fa]  text-sm focus:outline-none focus:ring-0 max-mf:w-full"
                 placeholder="PASSWORD"
                 value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) =>
+                  debounce(handleInputChange(e, setPassword), 2000)
+                }
               />
             </div>
-            <div className="w-[49%]">
+            <div className="lg:w-[49%] w-full">
               <input
-                type="text"
-                className="w-full bg-[#333] border-[1px] border-[#444] py-2 px-3 text-[#e6e6fa] font-[opensans] text-sm focus:outline-none focus:ring-0 max-mf:w-full"
+                type="password"
+                className="w-full bg-[#333] border-[1px] border-[#444] py-2 px-3 text-[#e6e6fa]  text-sm focus:outline-none focus:ring-0 max-mf:w-full"
                 placeholder="CONFIRM PASSWORD"
                 value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
+                onChange={(e) =>
+                  debounce(handleInputChange(e, setConfirmPassword), 2000)
+                }
               />
             </div>
           </section>
@@ -312,8 +159,8 @@ const Register = () => {
               register
             </button>
           </div>
-          <div className="text-[#e6e6fa] font-[poppins] text-sm flex items-center space-x-3">
-            <span>Don't have an account?</span>
+          <div className="text-[#e6e6fa] font-[poppins] text-sm flex items-center space-x-3 my-2">
+            <span>Already have an account?</span>
             <Link to={"/login"} className="underline text-[#ffa500]">
               Sign in
             </Link>
@@ -325,4 +172,3 @@ const Register = () => {
 };
 
 export default Register;
-// https://www.metaintro.com/?ref=s4WW6x

@@ -2,7 +2,7 @@ import User from "../database/models/userModel.js"
 import { generateAccessToken, verifyRefreshToken } from "../jwtAuth/generateTokens.js"
 import { verifyAccessToken } from "../jwtAuth/generateTokens.js"
 
-const fetchUserSession = (req, res, next) => {
+const fetchUserSession = async(req, res, next) => {
 
     // fetch access and refresh tokens
     const { accessToken, refreshToken } = req.cookies
@@ -24,22 +24,22 @@ const fetchUserSession = (req, res, next) => {
 
     // fetch email payload 
     const email = refreshDecoded.email
-
+    
     // find user with email in database
-    const user = User.findOne({
+    const user = await User.findOne({
         where: {
             email,
         }
     })
-
+    
     if(!user) return next()
 
     // generate new token
     const newAccessToken = generateAccessToken(user)
 
-     req.cookie("accessToken", newAccessToken, {
+     res.cookie("accessToken", newAccessToken, {
        httpOnly: true,
-       maxAge: 30 * 60 * 1000,
+       maxAge: 1 * 60 * 60 * 1000,
        secure: process.env.ENVIRONMENT === "production",
        sameSite: "lax",
      });

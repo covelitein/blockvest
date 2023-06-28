@@ -1,11 +1,10 @@
-import { useState, useEffect, useRef } from "react";
+import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import SwiperCore, { Navigation, Pagination, Autoplay } from "swiper";
 import Button from "@mui/material/Button";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { FaChevronRight, FaChevronLeft } from "react-icons/fa";
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 

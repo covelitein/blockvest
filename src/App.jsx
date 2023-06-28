@@ -16,6 +16,10 @@ const Register = lazy(async () => {
   await wait(1000);
   return import("./view/Register");
 });
+const Dashboard = lazy(async () => {
+  await wait(1000);
+  return import("./view/Dashboard");
+});
 
 import Loader from './components/Loader'
 
@@ -29,6 +33,7 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
       </Suspense>
     </div>

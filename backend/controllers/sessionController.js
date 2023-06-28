@@ -103,7 +103,7 @@ const loginHandler = async (req, res)=> {
 
         res.cookie("accessToken", accessToken, {
           httpOnly: true,
-          maxAge: 30 * 60 * 1000,
+          maxAge: 1 * 60 * 60 * 1000,
           secure: process.env.ENVIRONMENT === "production",
           sameSite: "lax",
         });
@@ -130,7 +130,7 @@ const loginHandler = async (req, res)=> {
 
         }
 
-        return res.status(200).send({ message: "Registration successful!" });
+        return res.status(200).send({ message: "login successful!" });
 
     } catch (err) {
 

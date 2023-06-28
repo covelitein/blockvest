@@ -1,6 +1,5 @@
 import React from 'react'
-import Accordion from '../components/Accordion'
-import Heading from './Heading';
+import { Accordion } from './subcomponents'
 
 const Faq = () => {
   return (

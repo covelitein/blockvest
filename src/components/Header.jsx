@@ -1,52 +1,55 @@
-import { useState,useEffect } from 'react'
-import logo from '../assets/Image/logo1.svg'
+import { useState, useCallback } from 'react'
 import { Link } from 'react-router-dom'
 import { AiOutlineUser, AiOutlineUserAdd } from "react-icons/ai";
-
+import { useDebounce, useLoadListener, useScrollListener } from '../assets/customHooks'
+import { logo } from '../assets/Image'
 
 
 
 const Header = () => {
-  const [isOpen,setOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [isOpen, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  const handleScroll = ()=> {
-    window.addEventListener('scroll',()=>{
-       let scrollStatus = window.scrollY > 100
-       if(scrollStatus) {
-        setScrolled(true)
-       } else {
-         setScrolled(false)
-       }
-     })
-  }
-  const handleLoad = ()=> {
-    window.addEventListener('load',()=>{
-       let scrollStatus = window.scrollY > 200
-       if(scrollStatus) {
-        setScrolled(true)
-       } else {
-         setScrolled(false)
-       }
-     })
-  }
+  const handleScroll = useCallback(() => {
+    if (window.pageYOffset > 100) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  }, [scrolled]);
 
-  useEffect(()=>{
-    handleScroll()
-    handleLoad()
-  })
+  const handleLoad = useCallback(() => {
+    if (window.pageYOffset > 100) {
+      setScrolled(true);
+    } else {
+      setScrolled(false);
+    }
+  }, [scrolled]);
 
-  const handleClick = (e)=> {
-    setOpen(!isOpen)
-  }
+  const updateOnScroll = useDebounce(handleScroll, 100);
+  const updateOnLoad = handleLoad;
+
+  useLoadListener(updateOnScroll);
+  useScrollListener(updateOnLoad);
+
+  const handleClick = useCallback(() => {
+    setOpen(!isOpen);
+  },[isOpen])
+
+  const OpenHamburger = useDebounce(handleClick, 100)
 
   return (
-    <header className={`w-full h-[5rem] flex justify-center transition-all duration-75 items-center fixed top-0 left-0 z-[500] text-white ${scrolled ? 'bg-[rgba(0,0,0,0.7)] glassy' : 'bg-transparent'}`}>
+    <header
+      className={`w-full h-[5rem] flex justify-center transition-all duration-75 items-center fixed top-0 left-0 z-[500] text-white ${
+        scrolled ? "bg-[rgba(0,0,0,0.7)] glassy" : "bg-transparent"
+      }`}
+    >
       <div className="w-11/12 mx-auto flex items-center justify-between">
-        <div className="flex items-center -space-x-4">
-          <img src={logo} alt="" className="h-[3rem] w-[3rem]" />
-          <h3 className="text-[#FFA500] mt-5 font-[marko] text-xl">lockvest</h3>
-        </div>
+        <Link to={"/"} className="flex items-center -space-x-1.5">
+          <img src={logo} alt="" className="h-[2rem] w-[2rem]" />
+          <h3 className="text-[#FFA500] mt-3 font-[marko] text-lg">lockvest</h3>
+        </Link>
+
         <ul className="hidden items-center space-x-5 ml-2 text-white font-[bellota] text-base lg:flex uppercase">
           <Link
             to={"/"}
@@ -68,11 +71,17 @@ const Header = () => {
           </li>
         </ul>
         <div className="lg:flex items-center space-x-2 hidden">
-          <Link to={'/login'} className="text-[#FFA500] font-[bellota] border-[2px] border-[#FFA500] px-2 py-1  text-md hover:bg-[#CC8000] hover:text-white hover:border-[#CC8000] flex  items-center space-x-4 uppercase">
+          <Link
+            to={"/login"}
+            className="text-[#FFA500] font-[bellota] border-[2px] border-[#FFA500] px-2 py-1  text-md hover:bg-[#CC8000] hover:text-white hover:border-[#CC8000] flex  items-center space-x-4 uppercase"
+          >
             <AiOutlineUser />
             Login
           </Link>
-          <Link to={'/register'} className="text-white font-[bellota] border-[2px] border-[#FFA500] bg-[#FFA500] px-2 py-1 bg-opacity text-md duration-200 hover:bg-[#CC8000] hover:border-[#CC8000] flex items-center space-x-4 uppercase">
+          <Link
+            to={"/register"}
+            className="text-white font-[bellota] border-[2px] border-[#FFA500] bg-[#FFA500] px-2 py-1 bg-opacity text-md duration-200 hover:bg-[#CC8000] hover:border-[#CC8000] flex items-center space-x-4 uppercase"
+          >
             <AiOutlineUserAdd className="text-xl text-white !important" />
             Register
           </Link>
@@ -84,7 +93,7 @@ const Header = () => {
             viewBox="0 0 32 42"
             xmlns="http://www.w3.org/2000/svg"
             className={`${!isOpen ? "" : "active"} svg`}
-            onClick={handleClick}
+            onClick={OpenHamburger}
           >
             <g transform="matrix(1,0,0,1,-438.286,-264.004)">
               <g id="arrow_left1">

@@ -1,5 +1,7 @@
 import React from 'react'
-import bridge from '../assets/Image/bridge.jpg'
+import { bridge } from '../assets/Image';
+
+
 
 const Bridge = () => {
   return (

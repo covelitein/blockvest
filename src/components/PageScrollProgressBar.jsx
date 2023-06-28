@@ -1,40 +1,48 @@
 import React from 'react'
 import { useState,useRef,useEffect } from 'react'
 import { FaAngleDoubleUp } from 'react-icons/fa'
+import useDebounce from '../assets/customHooks/useDebounce'
 
 const PageScrollProgressBar = () => {
-    const element = useRef(null)
-    const [ready, setReady] = useState(false)
+    const element = useRef();
+    const [ready, setReady] = useState(false);
 
-    const progressBar = (element) => {
-      const scrollPosition = window.scrollY
-      const documentHeight = document.body.offsetHeight - window.innerHeight
-      const percentage = (scrollPosition / documentHeight) * 100
+    const progressBar = () => {
+      const scrollPosition = window.scrollY;
+      const documentHeight = document.body.offsetHeight - window.innerHeight;
+      const percentage = (scrollPosition / documentHeight) * 100;
 
-      element.current.style.strokeDasharray = `${percentage}, 100`
-    }
+      element.current.style.strokeDasharray = `${percentage}, 100`;
+    };
 
-    const check = () => {
+    const check = useDebounce(() => {
       if (window.scrollY > 500) {
         setReady(true);
       } else {
         setReady(false);
       }
-    };
+    }, 300);
 
-    const scrollToTop = () => {
+    const scrollToTop = useDebounce(() => {
       window.scrollTo({
         top: 0,
         behavior: "smooth",
       });
-    };
+    }, 500);
 
-        useEffect(() => {
-          window.addEventListener("scroll", ()=> progressBar(element))
-          window.addEventListener("load", ()=> progressBar(element))
-          window.addEventListener("scroll", check)
-          window.addEventListener("load", check)
-        }, [])   
+    useEffect(() => {
+      window.addEventListener("scroll", progressBar);
+      window.addEventListener("load", progressBar);
+      window.addEventListener("scroll", check);
+      window.addEventListener("load", check);
+
+      return () => {
+        window.removeEventListener("scroll", progressBar);
+        window.removeEventListener("load", progressBar);
+        window.removeEventListener("scroll", check);
+        window.removeEventListener("load", check);
+      };
+    }, []);
 
 
   return (

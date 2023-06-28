@@ -1,5 +1,5 @@
 import React from 'react'
-import tImage from '../assets/Image/testimonial.jpg'
+import tImage from '../assets/Image/testimonial.webp'
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
@@ -10,10 +10,8 @@ import {
   FaStar,
   FaStarHalfAlt,
 } from "react-icons/fa";
-import a1 from '../assets/Image/a1.jpg'
-import a2 from '../assets/Image/a2.jpg'
-import a3 from '../assets/Image/a3.jpg'
-import Heading from './Heading';
+import { Heading } from './subcomponents';
+import  { testimony1, testimony2, testimony3 } from '../assets/Image'
 
 SwiperCore.use([Navigation, Pagination, Autoplay]);
 
@@ -69,7 +67,7 @@ const Testimonial = () => {
                   </div>
                   <div className="mt-3 px-7 flex items-center space-x-3">
                     <img
-                      src={a1}
+                      src={testimony1}
                       alt=""
                       className="object-cover h-[6rem] w-[6rem] rounded-full max-sm:w-[4rem] max-sm:h-[4rem]"
                     />
@@ -102,7 +100,7 @@ const Testimonial = () => {
                   </div>
                   <div className="mt-3 px-7 flex items-center space-x-3">
                     <img
-                      src={a2}
+                      src={testimony2}
                       alt=""
                       className="object-cover h-[6rem] w-[6rem] rounded-full max-sm:w-[4rem] max-sm:h-[4rem]"
                     />
@@ -135,7 +133,7 @@ const Testimonial = () => {
                   </div>
                   <div className="mt-3 px-7 flex items-center space-x-3">
                     <img
-                      src={a3}
+                      src={testimony3}
                       alt=""
                       className="object-cover h-[6rem] w-[6rem] rounded-full max-sm:w-[4rem] max-sm:h-[4rem]"
                     />

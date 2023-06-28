@@ -631,3 +631,186 @@ function checkToken(req, res, next) {
 }
 
 module.exports = checkToken;
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" id="github"><g data-name="Github 1"><g data-name="<Group>"><path fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" d="M12 .5A11.5 11.5 0 0 0 .5 12a11.82 11.82 0 0 0 9 11.5v-3h-1c-2.62 0-3.54-4-5-4 2.79 0 3.33 2 5 2a.89.89 0 0 0 1-1v-.35c-2.91-.82-5-3-5-5.65a5.26 5.26 0 0 1 1.57-3.66A3.16 3.16 0 0 1 6.5 4.5 5.26 5.26 0 0 1 8.88 6a9.14 9.14 0 0 1 6.24 0 5.26 5.26 0 0 1 2.38-1.5 3.16 3.16 0 0 1 .43 3.34 5.26 5.26 0 0 1 1.57 3.66c0 2.74-2.29 5-5.42 5.76a4.68 4.68 0 0 1 .42 2.24v4a11.82 11.82 0 0 0 9-11.5A11.5 11.5 0 0 0 12 .5Z" data-name="<Path>"></path></g></g></svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" id="twitter"><path d="M34,20a4,4,0,0,0,4-4V14a4,4,0,0,0-4-4H18a1,1,0,0,0,0,2H34a2,2,0,0,1,2,2v2a2,2,0,0,1-2,2H21a1,1,0,0,0-1,1V34a5.785,5.785,0,0,0,6,6h8a2,2,0,0,1,2,2v2a2,2,0,0,1-2,2H23c-8.859,0-9-8.635-9-9V4a2,2,0,0,1,2-2h2a2,2,0,0,1,2,2V7a1,1,0,0,0,2,0V4a4,4,0,0,0-4-4H16a4,4,0,0,0-4,4V37c0,.11.126,11,11,11H34a4,4,0,0,0,4-4V42a4,4,0,0,0-4-4H26a3.85,3.85,0,0,1-4-4V20Z" data-name="30-Twitter"></path></svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" id="twitter"><path d="M34,20a4,4,0,0,0,4-4V14a4,4,0,0,0-4-4H18a1,1,0,0,0,0,2H34a2,2,0,0,1,2,2v2a2,2,0,0,1-2,2H21a1,1,0,0,0-1,1V34a5.785,5.785,0,0,0,6,6h8a2,2,0,0,1,2,2v2a2,2,0,0,1-2,2H23c-8.859,0-9-8.635-9-9V4a2,2,0,0,1,2-2h2a2,2,0,0,1,2,2V7a1,1,0,0,0,2,0V4a4,4,0,0,0-4-4H16a4,4,0,0,0-4,4V37c0,.11.126,11,11,11H34a4,4,0,0,0,4-4V42a4,4,0,0,0-4-4H26a3.85,3.85,0,0,1-4-4V20Z" data-name="30-Twitter"></path></svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" id="twitter"><path d="M34,20a4,4,0,0,0,4-4V14a4,4,0,0,0-4-4H18a1,1,0,0,0,0,2H34a2,2,0,0,1,2,2v2a2,2,0,0,1-2,2H21a1,1,0,0,0-1,1V34a5.785,5.785,0,0,0,6,6h8a2,2,0,0,1,2,2v2a2,2,0,0,1-2,2H23c-8.859,0-9-8.635-9-9V4a2,2,0,0,1,2-2h2a2,2,0,0,1,2,2V7a1,1,0,0,0,2,0V4a4,4,0,0,0-4-4H16a4,4,0,0,0-4,4V37c0,.11.126,11,11,11H34a4,4,0,0,0,4-4V42a4,4,0,0,0-4-4H26a3.85,3.85,0,0,1-4-4V20Z" data-name="30-Twitter"></path></svg>
+
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" id="twitter"><path d="M34,20a4,4,0,0,0,4-4V14a4,4,0,0,0-4-4H18a1,1,0,0,0,0,2H34a2,2,0,0,1,2,2v2a2,2,0,0,1-2,2H21a1,1,0,0,0-1,1V34a5.785,5.785,0,0,0,6,6h8a2,2,0,0,1,2,2v2a2,2,0,0,1-2,2H23c-8.859,0-9-8.635-9-9V4a2,2,0,0,1,2-2h2a2,2,0,0,1,2,2V7a1,1,0,0,0,2,0V4a4,4,0,0,0-4-4H16a4,4,0,0,0-4,4V37c0,.11.126,11,11,11H34a4,4,0,0,0,4-4V42a4,4,0,0,0-4-4H26a3.85,3.85,0,0,1-4-4V20Z" data-name="30-Twitter"></path></svg>
+
+
+
+// import {
+//   Menu,
+//   MenuHandler,
+//   MenuList,
+//   MenuItem,
+//   Avatar,
+//   Typography,
+// } from "@material-tailwind/react";
+// import {
+//   Cog6ToothIcon,
+//   PowerIcon,
+//   InboxArrowDownIcon,
+//   UserCircleIcon,
+//   LifebuoyIcon,
+// } from "@heroicons/react/24/outline";
+ 
+// export default function Example() {
+//   return (
+//     <Menu>
+//       <MenuHandler>
+//         <Avatar
+//           variant="circular"
+//           alt="candice wu"
+//           className="cursor-pointer"
+//           src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1480&q=80"
+//         />
+//       </MenuHandler>
+//       <MenuList>
+//         <MenuItem className="flex items-center gap-2">
+//           <UserCircleIcon strokeWidth={2} className="h-4 w-4" />
+//           <Typography variant="small" className="font-normal">
+//             My Profile
+//           </Typography>
+//         </MenuItem>
+//         <MenuItem className="flex items-center gap-2">
+//           <Cog6ToothIcon strokeWidth={2} className="h-4 w-4" />
+//           <Typography variant="small" className="font-normal">
+//             Edit Profile
+//           </Typography>
+//         </MenuItem>
+//         <MenuItem className="flex items-center gap-2">
+//           <InboxArrowDownIcon strokeWidth={2} className="h-4 w-4" />
+//           <Typography variant="small" className="font-normal">
+//             Inbox
+//           </Typography>
+//         </MenuItem>
+//         <MenuItem className="flex items-center gap-2">
+//           <LifebuoyIcon strokeWidth={2} className="h-4 w-4" />
+//           <Typography variant="small" className="font-normal">
+//             Help
+//           </Typography>
+//         </MenuItem>
+//         <hr className="my-2 border-blue-gray-50" />
+//         <MenuItem className="flex items-center gap-2 ">
+//           <PowerIcon strokeWidth={2} className="h-4 w-4" />
+//           <Typography variant="small" className="font-normal">
+//             Sign Out
+//           </Typography>
+//         </MenuItem>
+//       </MenuList>
+//     </Menu>
+//   );
+// }
+
+// <div class="flex items-center justify-center min-h-screen p-5 bg-gray-100 min-w-screen">
+
+//     <div class="flex space-x-2 animate-pulse">
+//         <div class="w-3 h-3 bg-gray-500 rounded-full"></div>
+//         <div class="w-3 h-3 bg-gray-500 rounded-full"></div>
+//         <div class="w-3 h-3 bg-gray-500 rounded-full"></div>
+//     </div>
+
+// </div>
+Infinite moments we have shared,
+Laughter and joy, so deeply cared,
+Opening our hearts, both unimpaired,
+Voyaging together, a bond so rare,
+Embracing friendship beyond compare,
+You are the one who's always there.
+
+Lifting spirits, a guiding light,
+Overcoming challenges, shining bright,
+Valuing our connection day and night,
+Everlasting support, through any plight,
+You bring warmth, like sunshine's might,
+Oblivious to you, my love takes flight.
+
+// Investment Portfolio - <BiWallet />
+// Crypto Trading - <BiBitcoin />
+// Market Analysis - <BiLineChart />
+// Risk Management - <BiShield />
+// User Security - <BiLockAlt />
+// Customer Support - <BiSupport />
+
+import { RiHome2Line, RiBarChartHorizontalLine, RiMoneyDollarCircleLine, RiAccountCircleLine, RiNewspaperLine, RiSettings2Line, RiQuestionLine } from 'react-icons/ri';
+
+// Example usage:
+const NavigationMenu = () => {
+  return (
+    <ul>
+      <li>
+        <RiHome2Line /> Home
+        {/* Content: Overview of the investment site */}
+        {/* Purpose: Provides a general introduction and overview of the investment platform */}
+      </li>
+      <li>
+        <RiBarChartHorizontalLine /> Investments
+        {/* Content: List of available investment options */}
+        {/* Purpose: Allows users to explore and select investment opportunities */}
+      </li>
+      <li>
+        <RiMoneyDollarCircleLine /> Portfolio
+        {/* Content: Overview of user's investment portfolio */}
+        {/* Purpose: Displays the performance and status of the user's investments */}
+      </li>
+      <li>
+        <RiAccountCircleLine /> Account
+        {/* Content: User account settings and information */}
+        {/* Purpose: Enables users to manage their account details and preferences */}
+      </li>
+      <li>
+        <RiNewspaperLine /> News
+        {/* Content: Latest news and updates related to investments */}
+        {/* Purpose: Provides users with relevant news and market insights */}
+      </li>
+      <li>
+        <RiSettings2Line /> Settings
+        {/* Content: Customization options and preferences */}
+        {/* Purpose: Allows users to personalize their site experience and adjust settings */}
+      </li>
+      <li>
+        <RiQuestionLine /> Help
+        {/* Content: FAQs, support options, and documentation */}
+        {/* Purpose: Offers assistance and answers to user queries or concerns */}
+      </li>
+    </ul>
+  );
+};
+The dashboard homepage of an investment site typically provides users with an overview of their account and key information related to their investments. Here are some common pieces of information that can be displayed on the dashboard homepage:
+
+Account Summary: Display a summary of the user's account, including the current balance, total investments, and any pending transactions.
+
+Portfolio Performance: Show the performance of the user's investment portfolio, such as the overall return on investment (ROI), gains or losses, and a graphical representation of portfolio growth over time.
+
+Asset Allocation: Provide a breakdown of the user's investments across different asset classes or investment types, giving them an overview of how their portfolio is diversified.
+
+Recent Activity: Show a list of recent transactions or activities related to the user's account, such as deposits, withdrawals, and trades.
+
+Market Overview: Display key market indicators or indices, such as stock market indices, currency exchange rates, or commodity prices, to provide users with a snapshot of the current market conditions.
+
+News and Updates: Highlight relevant news articles, market insights, or updates related to the investment industry, keeping users informed about important developments.
+
+Notifications or Alerts: If applicable, show any important notifications or alerts regarding account status, upcoming events, or changes in investment strategies.
+
+Remember, the specific information displayed on the dashboard homepage may vary depending on the nature of the investment site, user preferences, and available data. It's important to consider the usability and relevance of the information for your target users.
+
+As an investment site that handles trading on behalf of users, there are several scenarios in which users may experience losses despite expecting profits. Here are a few common scenarios:
+
+Market Volatility: The financial markets can be volatile, and the value of investments can fluctuate significantly. If there are unexpected market downturns or rapid price changes in the assets being traded, it can result in losses for users.
+
+Poor Investment Selection: If the trading decisions made by the investment site result in choosing underperforming assets or investments that do not meet the user's expectations, it can lead to losses. Not all investments will yield positive returns, and some may even decline in value.
+
+Execution Risks: The execution of trades may encounter risks such as slippage or delays. Slippage occurs when the executed trade is at a different price than expected, potentially resulting in losses. Delays in executing trades can also lead to missed opportunities or adverse price movements.
+
+Fees and Expenses: Users may incur fees and expenses associated with trading on the investment site. These fees can erode the overall returns, leading to lower profits or even losses depending on the performance of the investments.
+
+External Factors: Factors beyond the control of the investment site, such as economic events, political developments, or natural disasters, can impact the performance of investments and result in losses.
+
+It's important for users to understand that investing involves risks, and there is no guarantee of consistent profits. The investment site should provide clear information about the risks involved and educate users about the potential for losses. Users should also be encouraged to diversify their investments, set realistic expectations, and seek professional advice if needed.
