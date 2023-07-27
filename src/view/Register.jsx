@@ -9,7 +9,7 @@ import { throttle, debounce } from "../assets/utils/functions";
 
 const Register = () => {
   const [fullname, setFullName] = useState("");
-  const [username, setUserName] = useState("");
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
   const [phone, setPhone] = useState("");
@@ -34,11 +34,41 @@ const Register = () => {
   },[isFormValid])
 
 
+  const handleUsernameChange = async (e)=> {
+     try{
+        if(username == '') return
+        const response = await api.post('/api/usernameCheck', {
+          username,
+        })
+        const { message, error } = response.data
+        
+        if(error) return console.log(error)
 
+        console.log(message)
 
+     } catch (err) {
+       console.log(err)
+     }
+  }
+
+  const handleEmailChange = async (e)=> {
+      try {
+        if (email == "") return;
+        const response = await api.post("/api/emailCheck", {
+          email,
+        });
+        const { message, error } = response.data;
+
+        if (error) return console.log(error);
+
+        console.log(message);
+      } catch (err) {
+        console.log(err);
+      }
+  }
 
   
-
+  
 
   return (
     <main className="flex">
@@ -89,9 +119,7 @@ const Register = () => {
               className="w-full bg-[#333] border-[1px] border-[#444] py-2 px-3 text-[#e6e6fa]  text-sm focus:outline-none focus:ring-0 max-mf:w-full"
               placeholder="USERNAME"
               value={username}
-              onChange={(e) =>
-                debounce(handleInputChange(e, setUserName), 2000)
-              }
+              onChange={(e) => debounce(handleInputChange(e, setUsername), 2000)}
             />
           </div>
 
